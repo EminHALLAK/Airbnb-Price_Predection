@@ -36,11 +36,7 @@ def fetch_listing_details():
         # Create DataFrame
         df = pd.DataFrame(rows, columns=column_names)
 
-        print(f"Successfully fetched {len(df)} rows from listing_details table")
-        print(f"\nDataFrame shape: {df.shape}")
-        print(f"\nColumn names: {list(df.columns)}")
-        print(f"\nFirst few rows:")
-        print(df.head())
+
 
 
         return df
@@ -50,8 +46,6 @@ def fetch_listing_details():
         return None
 
     finally:
-        # Close database connection
-        if connection:
             cursor.close()
             connection.close()
             print("\nPostgreSQL connection is closed")
@@ -60,20 +54,5 @@ def fetch_listing_details():
 if __name__ == "__main__":
     # Fetch the data
     listing_df = fetch_listing_details()
-
-    # You can now use listing_df for further data cleaning and analysis
-    if listing_df is not None:
-        # Example: Display basic information about the DataFrame
-        print("\n" + "="*50)
-        print("DataFrame Info:")
-        print("="*50)
-        print(listing_df.info())
-        print("=" * 50)
-        print(listing_df.describe())
-        print("=" * 50)
-        print(listing_df.head())
-        print("="*50)
-
-
 
 
